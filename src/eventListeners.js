@@ -1,6 +1,7 @@
 import renderInnerPage from './pages/innerPage';
 import renderLoginPage from './pages/loginPage';
-import { signIn, signUp, signOut } from './auth';
+import { signIn, signUp, signOut, resetPassword } from './auth';
+import renderForgotPasswordPage from './pages/forgotPasswordPage';
 
 document.querySelector('#root').addEventListener('click', (e) => {
   if (e.target.closest('#loginButton')) {
@@ -42,5 +43,16 @@ document.querySelector('#root').addEventListener('click', (e) => {
   }
   if (e.target.closest('#signOutButton')) {
     signOut().then(renderLoginPage);
+  }
+  if (e.target.closest('#forgotPassword')) {
+    renderForgotPasswordPage();
+  }
+  if (e.target.closest('#backToLoginPage')) {
+    renderLoginPage();
+  }
+  if (e.target.closest('#resetPasswordButton')) {
+    const email = document.querySelector('#forgotPasswordEmail').value;
+    resetPassword(email);
+    renderLoginPage();
   }
 });

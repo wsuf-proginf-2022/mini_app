@@ -2,7 +2,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut as signOutFirebase
+  signOut as signOutFirebase,
+  sendPasswordResetEmail
 } from 'firebase/auth';
 import { app } from './database';
 
@@ -29,6 +30,15 @@ export async function signIn(email, password) {
 export async function signOut() {
   try {
     await signOutFirebase(auth);
+  } catch (error) {
+    window.alert(error.message);
+  }
+}
+
+export async function resetPassword(email) {
+  try {
+    await sendPasswordResetEmail(auth, email);
+    console.log('Email sent');
   } catch (error) {
     window.alert(error.message);
   }
