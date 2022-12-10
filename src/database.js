@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, addDoc, collection, getDocs } from 'firebase/firestore';
 import config from '../db_config.js';
 
-const app = initializeApp(config);
+export const app = initializeApp(config);
 export const db = getFirestore(app);
 
 export async function addData(data) {
