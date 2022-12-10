@@ -3,7 +3,6 @@ import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import './scss/index.scss';
 import './index.html';
-import { signUp } from './auth.js';
 import renderPreLoaderPage from './pages/preloaderPage';
 import renderLoginPage from './pages/loginPage';
 import './eventListeners';
