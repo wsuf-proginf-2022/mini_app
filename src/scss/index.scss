@@ -1,0 +1,37 @@
+@import './defaults';
+@import './inner-page';
+@import './log-in-page';
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+input {
+  @include default-input;
+}
+
+.svg-inline--fa {
+  margin-right: 5px;
+}
+
+.button {
+  @include default-button;
+
+  text-decoration: none;
+}
+
+.js-hidden {
+  display: none !important;
+}
+
+.alert {
+  @include default-alert;
+}
+
+.svg-preloader {
+  height: 200px;
+  left: calc(50% - 100px);
+  position: absolute;
+  top: calc(50% - 200px);
+  width: 200px;
+}

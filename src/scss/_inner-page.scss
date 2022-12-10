@@ -1,0 +1,15 @@
+body {
+  background-color: #f1f1f1;
+}
+
+.dashboard-container {
+  background: #e0e0e0;
+  border-radius: 50px;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #fff;
+  margin: 1rem;
+  padding: 3rem;
+
+  .data-to-add {
+    width: 400px;
+  }
+}
