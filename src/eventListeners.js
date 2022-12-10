@@ -1,6 +1,6 @@
 import renderInnerPage from './pages/innerPage';
 import renderLoginPage from './pages/loginPage';
-import { signIn, signUp } from './auth';
+import { signIn, signUp, signOut } from './auth';
 
 document.querySelector('#root').addEventListener('click', (e) => {
   if (e.target.closest('#loginButton')) {
@@ -26,7 +26,7 @@ document.querySelector('#root').addEventListener('click', (e) => {
   if (e.target.closest('#signUpButton')) {
     const email = document.querySelector('#signUpEmail').value;
     const password = document.querySelector('#signUpPassword').value;
-    const verifyPassword = document.querySelector('#signUpVerifyPassword').value;
+    const verifyPassword = document.querySelector('#verifySignUpPassword').value;
     if (password === verifyPassword) {
       signUp(email, password).then((user) => {
         if (user) {
@@ -39,5 +39,8 @@ document.querySelector('#root').addEventListener('click', (e) => {
     } else {
       window.alert('Passwords do not match!');
     }
+  }
+  if (e.target.closest('#signOutButton')) {
+    signOut().then(renderLoginPage);
   }
 });
