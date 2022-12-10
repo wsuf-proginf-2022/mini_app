@@ -1,5 +1,6 @@
 import renderInnerPage from './pages/innerPage';
-import { signIn } from './auth';
+import renderLoginPage from './pages/loginPage';
+import { signIn, signUp } from './auth';
 
 document.querySelector('#root').addEventListener('click', (e) => {
   if (e.target.closest('#loginButton')) {
@@ -11,5 +12,32 @@ document.querySelector('#root').addEventListener('click', (e) => {
         renderInnerPage();
       }
     });
+  }
+  if (e.target.closest('.top-buttons .button-right')) {
+    document.querySelector('.block-sign-up').classList.remove('js-hidden');
+    document.querySelector('.block-log-in').classList.add('js-hidden');
+    document.querySelector('.top-buttons .active').classList.add('js-left-50');
+  }
+  if (e.target.closest('.top-buttons .button-left')) {
+    document.querySelector('.block-sign-up').classList.add('js-hidden');
+    document.querySelector('.block-log-in').classList.remove('js-hidden');
+    document.querySelector('.top-buttons .active').classList.remove('js-left-50');
+  }
+  if (e.target.closest('#signUpButton')) {
+    const email = document.querySelector('#signUpEmail').value;
+    const password = document.querySelector('#signUpPassword').value;
+    const verifyPassword = document.querySelector('#signUpVerifyPassword').value;
+    if (password === verifyPassword) {
+      signUp(email, password).then((user) => {
+        if (user) {
+          console.log(user);
+          renderInnerPage();
+        } else {
+          renderLoginPage();
+        }
+      });
+    } else {
+      window.alert('Passwords do not match!');
+    }
   }
 });
