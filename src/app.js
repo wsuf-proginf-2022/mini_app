@@ -8,9 +8,11 @@ import renderLoginPage from './pages/loginPage';
 import renderInnerPage from './pages/innerPage';
 import { loginStatus } from './auth';
 import './eventListeners';
+import { addData } from './database';
 
 // signUp('zsolt.lengyel21@gmail.com', '123456');
 
+addData({ name: 'zsolt', age: 21 });
 // MVC - Model View Controller
 
 renderPreLoaderPage();
@@ -21,12 +23,10 @@ async function main() {
     if (user) {
       console.log(user);
       renderInnerPage();
-    } else {
-      renderLoginPage();
     }
   } catch (error) {
     renderLoginPage();
-    window.alert('hiba a loginStatus lekérdezésénél');
+    console.log(error);
   }
 }
 main();
