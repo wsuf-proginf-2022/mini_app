@@ -3,7 +3,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut as signOutFirebase,
-  sendPasswordResetEmail
+  sendPasswordResetEmail,
+  onAuthStateChanged
 } from 'firebase/auth';
 import { app } from './database';
 
@@ -42,4 +43,16 @@ export async function resetPassword(email) {
   } catch (error) {
     window.alert(error.message);
   }
+}
+
+export async function loginStatus() {
+  return new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        resolve(user);
+      } else {
+        reject('no user');
+      }
+    });
+  });
 }
